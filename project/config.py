@@ -8,15 +8,16 @@ class BaseConfig:
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'my_precious'
 
 
-class DevelopmentConfig:
+class DevelopmentConfig(BaseConfig):
     """Development configuration"""
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 
-class TestingConfig:
+class TestingConfig(BaseConfig):
     """Testing configuration"""
     DEBUG = True
     TESTING = True

@@ -1,0 +1,5 @@
+{
+  "test_config.py::TestDevelopmentConfig::test_app_is_development": true,
+  "test_config.py::TestTestingConfig::test_app_is_testing": true,
+  "test_users.py::TestUserService::test_users": true
+}
