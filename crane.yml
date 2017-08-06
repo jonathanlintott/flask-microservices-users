@@ -1,0 +1,10 @@
+services:
+
+
+
+  users-service:
+    container_name: users-service
+    build: ./
+    volume: ['/:/usr/src/app']
+    ports:
+      - 5001:5000 # expose ports - HOST:CONTAINER
