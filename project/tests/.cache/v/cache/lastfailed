@@ -1,3 +1,4 @@
 {
+  "test_config.py": true, 
   "test_users.py": true
 }
