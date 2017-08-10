@@ -1,5 +1,6 @@
 # project/tests/test_config.py
 
+import os
 import unittest
 
 from flask import current_app
@@ -9,7 +10,10 @@ from project import create_app
 
 app = create_app()
 
+is_containerized = os.environ.get('CONTAINERIZED', 'no')
 
+
+@unittest.skipIf(is_containerized == 'no', "Not in a container")
 class TestDevelopmentConfig(TestCase):
     def create_app(self):
         app.config.from_object('project.config.DevelopmentConfig')
@@ -25,6 +29,7 @@ class TestDevelopmentConfig(TestCase):
         )
 
 
+@unittest.skipIf(is_containerized == 'no', "Not in a container")
 class TestTestingConfig(TestCase):
     def create_app(self):
         app.config.from_object('project.config.TestingConfig')
@@ -41,6 +46,7 @@ class TestTestingConfig(TestCase):
         )
 
 
+@unittest.skipIf(is_containerized == 'no', "Not in a container")
 class TestProductionConfig(TestCase):
     def create_app(self):
         app.config.from_object('project.config.ProductionConfig')
